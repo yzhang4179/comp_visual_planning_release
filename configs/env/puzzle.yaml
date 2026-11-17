@@ -12,8 +12,8 @@ pad_before: 3
 pad_after: 3
 
 # === Inference ===
-planner_ckpt: ${ckpt_root}/${env_name}/diffusion_60000.ckpt
-invdyn_ckpt: ${ckpt_root}/${env_name}/invdyn_60000.ckpt
+planner_ckpt: ${ckpt_root}/${env_name}/diffusion.ckpt
+invdyn_ckpt: ${ckpt_root}/${env_name}/invdyn.ckpt
 x_min: -3.3                  # clip range of the Tweedie estimates in the guidance losses of cvp_sample
 x_max: 3.3
 canon_horizon: 76            # frames in the plan, covered by 6 overlapping chunks of 16 frames

@@ -47,13 +47,13 @@ hf download comp-visual-planning/cvp-models --include "cube/*" --include "cosmos
 
 | File | Description | Size |
 | --- | --- | --- |
-| `cube/diffusion_100000.ckpt` | planner for cube: DiT (16 blocks, width 1024) | 2.5 GB |
-| `drawer/diffusion_460000.ckpt` | planner for drawer: DiT (16 blocks, width 1024) | 2.5 GB |
-| `puzzle/diffusion_60000.ckpt` | planner for puzzle: DiT (24 blocks, width 1024) | 3.7 GB |
-| `tool/diffusion_220000.ckpt` | planner for tool: DiT (12 blocks, width 768) | 1.0 GB |
-| `<task>/invdyn_<step>.ckpt` | inverse dynamics model, predicts the action between two latent frames | 1.3 MB |
-| `<task>/actions_minmax.json` | min and max of each action dimension, used to normalize the actions | < 1 KB |
-| `cosmos/Cosmos-Tokenizer-CI16x16/` | encoder and decoder of NVIDIA's [Cosmos-0.1-Tokenizer-CI16x16](https://huggingface.co/nvidia/Cosmos-0.1-Tokenizer-CI16x16)| 163 MB |
+| [`cube/diffusion.ckpt`](https://huggingface.co/comp-visual-planning/cvp-models/blob/main/cube/diffusion.ckpt) | planner for cube: DiT (16 blocks, width 1024) | 2.5 GB |
+| [`drawer/diffusion.ckpt`](https://huggingface.co/comp-visual-planning/cvp-models/blob/main/drawer/diffusion.ckpt) | planner for drawer: DiT (16 blocks, width 1024) | 2.5 GB |
+| [`puzzle/diffusion.ckpt`](https://huggingface.co/comp-visual-planning/cvp-models/blob/main/puzzle/diffusion.ckpt) | planner for puzzle: DiT (24 blocks, width 1024) | 3.7 GB |
+| [`tool/diffusion.ckpt`](https://huggingface.co/comp-visual-planning/cvp-models/blob/main/tool/diffusion.ckpt) | planner for tool: DiT (12 blocks, width 768) | 1.0 GB |
+| `<task>/invdyn.ckpt` ([cube](https://huggingface.co/comp-visual-planning/cvp-models/blob/main/cube/invdyn.ckpt), [drawer](https://huggingface.co/comp-visual-planning/cvp-models/blob/main/drawer/invdyn.ckpt), [puzzle](https://huggingface.co/comp-visual-planning/cvp-models/blob/main/puzzle/invdyn.ckpt), [tool](https://huggingface.co/comp-visual-planning/cvp-models/blob/main/tool/invdyn.ckpt)) | inverse dynamics model, predicts the action between two latent frames | 1.3 MB |
+| `<task>/actions_minmax.json` ([cube](https://huggingface.co/comp-visual-planning/cvp-models/blob/main/cube/actions_minmax.json), [drawer](https://huggingface.co/comp-visual-planning/cvp-models/blob/main/drawer/actions_minmax.json), [puzzle](https://huggingface.co/comp-visual-planning/cvp-models/blob/main/puzzle/actions_minmax.json), [tool](https://huggingface.co/comp-visual-planning/cvp-models/blob/main/tool/actions_minmax.json)) | min and max of each action dimension, used to normalize the actions | < 1 KB |
+| [`cosmos/Cosmos-Tokenizer-CI16x16/`](https://huggingface.co/comp-visual-planning/cvp-models/tree/main/cosmos/Cosmos-Tokenizer-CI16x16) | encoder and decoder of NVIDIA's [Cosmos-0.1-Tokenizer-CI16x16](https://huggingface.co/nvidia/Cosmos-0.1-Tokenizer-CI16x16) | 163 MB |
 
 Each planner file holds the online and the EMA weights (`model` and `model_ema`).
 
