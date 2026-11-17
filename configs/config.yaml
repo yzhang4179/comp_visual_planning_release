@@ -1,0 +1,53 @@
+defaults:
+  - _self_
+  - env: cube                # cube | drawer | puzzle | tool, see configs/env/
+  - override hydra/hydra_logging: disabled
+  - override hydra/job_logging: disabled
+
+# === General ===
+seed: 0
+device: cuda
+hf_repo: comp-visual-planning/models   # checkpoints are downloaded from here when missing locally
+ckpt_root: ckpts
+cosmos_dir: ${ckpt_root}/cosmos/Cosmos-Tokenizer-CI16x16
+actions_stats_path: ${ckpt_root}/${env_name}/actions_minmax.json   # per-dimension action range, to normalize the actions for training and unnormalize them at inference
+
+# === Model ===
+in_dim: 16                   # channels of a Cosmos latent
+emb_dim: 512                 # size of the diffusion timestep embedding
+input_size: [16, 16, 16]     # (T, H, W): a chunk is 16 frames of 16x16 latents
+patch_size: [1, 4, 4]        # (T, H, W)
+dropout: 0.1
+diffusion_steps: 500
+predict_noise: false
+beta_schedule: cosine
+invdyn_embed_dim: 384
+
+# === Training ===
+dataset_path: data/${env_name}/${env_name}.hdf5   # HDF5 in the layout read by cvp/dataset/sapien_dataset.py
+lr: 1.0e-4
+weight_decay: 1.0e-6         # AdamW of the planner (the inverse dynamics model uses Adam without weight decay)
+ema_rate: 0.995              # EMA of the planner weights
+gradient_steps: 1000000
+num_workers: 2
+log_interval: 200
+save_interval: 20000
+invdyn_batch_size: 64
+train_dir: outputs/train/${env_name}
+
+# === Inference ===
+method: cvp                  # cvp (ours) | gsc (DiffCollage / Generative Skill Chaining baseline)
+start: 0
+goal: 0
+num_episodes: 30
+sample_steps: 300            # DDIM steps over the 500-step training schedule
+temperature: 1.0             # scale of the initial noise
+output_dir: outputs/${method}/${env_name}/start_${start}_goal_${goal}/seed_${seed}
+video_fps: 10
+
+hydra:
+  run:
+    dir: .
+  output_subdir: null
+  job:
+    chdir: false

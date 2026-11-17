@@ -1,0 +1,13 @@
+torch>=2.2
+numpy>=1.24,<2.0
+einops
+h5py
+imageio>=2.31
+imageio-ffmpeg>=0.4.9
+tqdm
+hydra-core>=1.3
+huggingface_hub>=1.0
+sapien==3.0.0b1
+mplib==0.2.1
+gymnasium==0.29.1
+transforms3d

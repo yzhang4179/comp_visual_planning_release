@@ -1,0 +1,25 @@
+# @package _global_
+env_name: drawer
+
+# === Model ===
+d_model: 1024
+n_heads: 16
+depth: 16
+
+# === Training ===
+batch_size: 64               # per GPU, the paper used 4 GPUs
+pad_before: 2
+pad_after: 3
+
+# === Inference ===
+planner_ckpt: ${ckpt_root}/${env_name}/diffusion_460000.ckpt
+invdyn_ckpt: ${ckpt_root}/${env_name}/invdyn_60000.ckpt
+x_min: -2.6                  # clip range of the Tweedie estimates in the guidance losses of cvp_sample
+x_max: 2.6
+canon_horizon: 64            # frames in the plan, covered by 5 overlapping chunks of 16 frames
+stride: 12                   # a chunk starts every 12 frames, so neighboring chunks share 4
+horizon_ctx: [[2, 4], [4, 4], [4, 4], [4, 4], [4, 2]]   # per chunk: number of first and last frames tied to the neighboring chunks, or to the start and goal
+wg: 0.9
+discount: 0.6
+w_sync: 0.05
+sync_loss: l2
