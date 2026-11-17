@@ -7,7 +7,7 @@ defaults:
 # === General ===
 seed: 0
 device: cuda
-hf_repo: comp-visual-planning/models   # checkpoints are downloaded from here when missing locally
+hf_repo: comp-visual-planning/cvp-models   # checkpoints are downloaded from here when missing locally
 ckpt_root: ckpts
 cosmos_dir: ${ckpt_root}/cosmos/Cosmos-Tokenizer-CI16x16
 actions_stats_path: ${ckpt_root}/${env_name}/actions_minmax.json   # per-dimension action range, to normalize the actions for training and unnormalize them at inference

@@ -3,7 +3,7 @@
 [[Project page]](https://comp-visual-planning.github.io/)
 [[Paper]](https://arxiv.org/pdf/2603.02646)
 [[arXiv]](https://arxiv.org/abs/2603.02646)
-[[Hugging Face]](https://huggingface.co/comp-visual-planning/models)
+[[Hugging Face]](https://huggingface.co/comp-visual-planning/cvp-models)
 
 [Yixin Zhang](https://yzhang4179.github.io/)<sup>1</sup>,
 [Yunhao Luo](https://devinluo27.github.io/)<sup>1, 2</sup>,
@@ -38,11 +38,11 @@ The hyper-parameters are in [`configs/config.yaml`](configs/config.yaml) and the
 
 ## 📊 Using Pretrained Models
 
-The checkpoints used in the paper are on the Hugging Face Hub at [comp-visual-planning/models](https://huggingface.co/comp-visual-planning/models). `eval.py` downloads the files of a task into `ckpts/` when they are missing, so you can run inference right away. To download them by hand:
+The checkpoints used in the paper are on the Hugging Face Hub at [comp-visual-planning/cvp-models](https://huggingface.co/comp-visual-planning/cvp-models). `eval.py` downloads the files of a task into `ckpts/` when they are missing, so you can run inference right away. To download them by hand:
 
 ```bash
-hf download comp-visual-planning/models --local-dir ckpts                                          # everything (about 10 GB)
-hf download comp-visual-planning/models --include "cube/*" --include "cosmos/*" --local-dir ckpts  # one task
+hf download comp-visual-planning/cvp-models --local-dir ckpts                                          # everything (about 10 GB)
+hf download comp-visual-planning/cvp-models --include "cube/*" --include "cosmos/*" --local-dir ckpts  # one task
 ```
 
 | File | Description | Size |
@@ -53,7 +53,7 @@ hf download comp-visual-planning/models --include "cube/*" --include "cosmos/*" 
 | `tool/diffusion_220000.ckpt` | planner for tool: DiT (12 blocks, width 768) | 1.0 GB |
 | `<task>/invdyn_<step>.ckpt` | inverse dynamics model, predicts the action between two latent frames | 1.3 MB |
 | `<task>/actions_minmax.json` | min and max of each action dimension, used to normalize the actions | < 1 KB |
-| `cosmos/Cosmos-Tokenizer-CI16x16/` | encoder and decoder of NVIDIA's [Cosmos-0.1-Tokenizer-CI16x16](https://huggingface.co/nvidia/Cosmos-0.1-Tokenizer-CI16x16), unmodified, with their license | 163 MB |
+| `cosmos/Cosmos-Tokenizer-CI16x16/` | encoder and decoder of NVIDIA's [Cosmos-0.1-Tokenizer-CI16x16](https://huggingface.co/nvidia/Cosmos-0.1-Tokenizer-CI16x16)| 163 MB |
 
 Each planner file holds the online and the EMA weights (`model` and `model_ema`).
 
